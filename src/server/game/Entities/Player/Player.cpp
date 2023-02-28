@@ -2002,6 +2002,10 @@ void Player::RemoveFromWorld()
 
 void Player::SetObjectScale(float scale)
 {
+    FIRE(Player, OnUpdateScale,
+        TSPlayer(this),
+        TSMutableNumber<float>(&scale)
+    );
     Unit::SetObjectScale(scale);
     SetBoundingRadius(scale * DEFAULT_PLAYER_BOUNDING_RADIUS);
     SetCombatReach(scale * DEFAULT_PLAYER_COMBAT_REACH);
