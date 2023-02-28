@@ -1192,7 +1192,7 @@ TC_API_EXPORT EnumText EnumUtils<SpellAttr7>::ToString(SpellAttr7 value)
         case SPELL_ATTR7_HAS_CHARGE_EFFECT: return { "SPELL_ATTR7_HAS_CHARGE_EFFECT", "Has charge effect", "" };
         case SPELL_ATTR7_ZONE_TELEPORT: return { "SPELL_ATTR7_ZONE_TELEPORT", "Is zone teleport", "" };
         case SPELL_ATTR7_UNK20: return { "SPELL_ATTR7_UNK20", "Unknown attribute 20@Attr7", "Invulnerability related?" };
-        case SPELL_ATTR7_UNK21: return { "SPELL_ATTR7_UNK21", "Unknown attribute 21@Attr7", "" };
+        case SPELL_ATTR7_CHAIN_USING_RADIUS: return { "SPELL_ATTR7_CHAIN_USING_RADIUS", "Uses radius of effect for chain target distance", "Only used for spells with chain effects, to make them use the radius instead of default values" };
         case SPELL_ATTR7_IGNORE_COLD_WEATHER_FLYING: return { "SPELL_ATTR7_IGNORE_COLD_WEATHER_FLYING", "Ignore cold weather flying restriction", "Set for loaner mounts, allows them to be used despite lacking required flight skill" };
         case SPELL_ATTR7_CANT_DODGE: return { "SPELL_ATTR7_CANT_DODGE", "Spell cannot be dodged", "" };
         case SPELL_ATTR7_CANT_PARRY: return { "SPELL_ATTR7_CANT_PARRY", "Spell cannot be parried", "" };
@@ -1236,7 +1236,7 @@ TC_API_EXPORT SpellAttr7 EnumUtils<SpellAttr7>::FromIndex(size_t index)
         case 18: return SPELL_ATTR7_HAS_CHARGE_EFFECT;
         case 19: return SPELL_ATTR7_ZONE_TELEPORT;
         case 20: return SPELL_ATTR7_UNK20;
-        case 21: return SPELL_ATTR7_UNK21;
+        case 21: return SPELL_ATTR7_CHAIN_USING_RADIUS;
         case 22: return SPELL_ATTR7_IGNORE_COLD_WEATHER_FLYING;
         case 23: return SPELL_ATTR7_CANT_DODGE;
         case 24: return SPELL_ATTR7_CANT_PARRY;
@@ -1277,7 +1277,7 @@ TC_API_EXPORT size_t EnumUtils<SpellAttr7>::ToIndex(SpellAttr7 value)
         case SPELL_ATTR7_HAS_CHARGE_EFFECT: return 18;
         case SPELL_ATTR7_ZONE_TELEPORT: return 19;
         case SPELL_ATTR7_UNK20: return 20;
-        case SPELL_ATTR7_UNK21: return 21;
+        case SPELL_ATTR7_CHAIN_USING_RADIUS: return 21;
         case SPELL_ATTR7_IGNORE_COLD_WEATHER_FLYING: return 22;
         case SPELL_ATTR7_CANT_DODGE: return 23;
         case SPELL_ATTR7_CANT_PARRY: return 24;

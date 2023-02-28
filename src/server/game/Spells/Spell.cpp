@@ -1865,8 +1865,24 @@ void Spell::SearchChainTargets(std::list<WorldObject*>& targets, uint32 chainTar
 {
     // max dist for jump target selection
     float jumpRadius = 0.0f;
-    switch (m_spellInfo->DmgClass)
-    {
+
+    // Radius for each of the 3 possible effects (Checks if null, first: If null, 0. If non-null, get the value from non-null pointer)
+    const float radius_0 = m_spellInfo->GetEffect(EFFECT_0).RadiusEntry == nullptr ? 0 : m_spellInfo->GetEffect(EFFECT_0).RadiusEntry->Radius;
+    const float radius_1 = m_spellInfo->GetEffect(EFFECT_1).RadiusEntry == nullptr ? 0 : m_spellInfo->GetEffect(EFFECT_1).RadiusEntry->Radius;
+    const float radius_2 = m_spellInfo->GetEffect(EFFECT_2).RadiusEntry == nullptr ? 0 : m_spellInfo->GetEffect(EFFECT_2).RadiusEntry->Radius;
+
+    // Get largest of all 3 effects radii (to check if any of them are above 0 later)
+    const float eff_radius = std::max({ radius_0, radius_1, radius_2 });
+
+    // ACHERAX
+    // Check for flag to use radius, and also check eff_radius for non-zero value. If spell has flag, and non-zero radius, it is using radius for chain distance.
+    bool isUsingEffRadius = (m_spellInfo->HasAttribute(SPELL_ATTR7_CHAIN_USING_RADIUS) && eff_radius != 0); // UNK95 (bit 245) in TSWoW? (SPELL_ATTR7_UNK21)
+
+    // If using effect radius (conditions above), define jumpRadius equal to that, otherwise use normal values
+    if (isUsingEffRadius) {
+        jumpRadius = eff_radius;
+    } else {
+        switch (m_spellInfo->DmgClass) {
         case SPELL_DAMAGE_CLASS_RANGED:
             // 7.5y for multi shot
             jumpRadius = 7.5f;
@@ -1884,6 +1900,7 @@ void Spell::SearchChainTargets(std::list<WorldObject*>& targets, uint32 chainTar
             else
                 jumpRadius = 10.0f;
             break;
+        }
     }
 
     // chain lightning/heal spells and similar - allow to jump at larger distance and go out of los
