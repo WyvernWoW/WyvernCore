@@ -606,6 +606,19 @@ void Unit::resetAttackTimer(WeaponAttackType type)
     m_attackTimer[type] = uint32(GetAttackTime(type) * m_modAttackSpeedPct[type]);
 }
 
+// ACHERAX - Expose Unit::SetCombatReach for TSWoW hook
+// wyvern-start
+
+void Unit::SetCombatReach(float combatReach) {
+    FIRE(Unit,OnUpdateCombatReach
+       , TSUnit(this)
+       , TSMutableNumber<float>(&combatReach)
+    );
+    SetFloatValue(UNIT_FIELD_COMBATREACH, combatReach);
+}
+
+// wyvern-end
+
 bool Unit::IsWithinCombatRange(Unit const* obj, float dist2compare) const
 {
     if (!obj || !IsInMap(obj) || !InSamePhase(obj))

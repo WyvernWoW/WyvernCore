@@ -835,7 +835,14 @@ class TC_GAME_API Unit : public WorldObject
         bool CanDualWield() const { return m_canDualWield; }
         virtual void SetCanDualWield(bool value) { m_canDualWield = value; }
         float GetCombatReach() const override { return GetFloatValue(UNIT_FIELD_COMBATREACH); }
-        void SetCombatReach(float combatReach) { SetFloatValue(UNIT_FIELD_COMBATREACH, combatReach); }
+
+        // ACHERAX
+        // wyvern-start
+
+        void SetCombatReach(float combatReach);
+
+        // wyvern-end
+
         float GetBoundingRadius() const { return GetFloatValue(UNIT_FIELD_BOUNDINGRADIUS); }
         void SetBoundingRadius(float boundingRadius) { SetFloatValue(UNIT_FIELD_BOUNDINGRADIUS, boundingRadius); }
         bool IsWithinCombatRange(Unit const* obj, float dist2compare) const;
