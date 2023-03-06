@@ -650,11 +650,21 @@ bool Unit::IsWithinMeleeRangeAt(Position const& pos, Unit const* obj) const
     return distsq <= maxdist * maxdist;
 }
 
+// wyvern-start
+
 float Unit::GetMeleeRange(Unit const* target) const
 {
-    float range = GetCombatReach() + target->GetCombatReach() + 4.0f / 3.0f;
+    // Old range calculation
+    //float range = GetCombatReach() + target->GetCombatReach() + 4.0f / 3.0f;
+    float range = GetCombatReach();
+    if (target->IsPlayer() && target->GetCombatReach() > range)
+        range += (1.5f * target->GetObjectScale()) + 4.0f / 3.0f;
+    else
+        range += (target->GetCombatReach() + 4.0f / 3.0f);
     return std::max(range, NOMINAL_MELEE_RANGE);
 }
+
+// wyvern-end
 
 AuraApplication* Unit::GetVisibleAura(uint8 slot) const
 {

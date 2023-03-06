@@ -117,10 +117,22 @@ bool ChaseMovementGenerator::Update(Unit* owner, uint32 diff)
         if (Creature* cOwner = owner->ToCreature())
             cOwner->SetCannotReachTarget(false);
         return true;
+
+    // wyvern-start
+
+    // Old hitboxSum calculation
+    //float const hitboxSum = owner->GetCombatReach() + target->GetCombatReach();
+    float hitboxSum = owner->GetCombatReach();
+    if (target->IsPlayer() && target->GetCombatReach() > hitboxSum) {
+        hitboxSum += (1.5f * target->GetObjectScale());
+    }
+    else {
+        hitboxSum += target->GetCombatReach();
     }
 
+    // wyvern-end
+
     bool const mutualChase = IsMutualChase(owner, target);
-    float const hitboxSum = owner->GetCombatReach() + target->GetCombatReach();
     float const minRange = _range ? _range->MinRange + hitboxSum : CONTACT_DISTANCE;
     float const minTarget = (_range ? _range->MinTolerance : 0.0f) + hitboxSum;
     float const maxRange = _range ? _range->MaxRange + hitboxSum : owner->GetMeleeRange(target); // melee range already includes hitboxes
