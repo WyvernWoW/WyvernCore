@@ -117,6 +117,7 @@ bool ChaseMovementGenerator::Update(Unit* owner, uint32 diff)
         if (Creature* cOwner = owner->ToCreature())
             cOwner->SetCannotReachTarget(false);
         return true;
+    }
 
     // wyvern-start
 
@@ -125,8 +126,7 @@ bool ChaseMovementGenerator::Update(Unit* owner, uint32 diff)
     float hitboxSum = owner->GetCombatReach();
     if (target->IsPlayer() && target->GetCombatReach() > hitboxSum) {
         hitboxSum += (1.5f * target->GetObjectScale());
-    }
-    else {
+    } else {
         hitboxSum += target->GetCombatReach();
     }
 
