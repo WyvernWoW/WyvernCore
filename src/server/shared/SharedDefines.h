@@ -135,6 +135,16 @@ enum Classes
     CLASS_WARLOCK       = 9, // TITLE Warlock
     //CLASS_UNK           = 10,
     CLASS_DRUID         = 11 // TITLE Druid
+    //CLASS_TITANBORN     = 12, // TITLE Titanborn
+    //CLASS_TITANBORN     = 13, // TITLE Titanborn
+    //CLASS_TITANBORN     = 14, // TITLE Titanborn
+    //CLASS_TITANBORN     = 15, // TITLE Titanborn
+    //CLASS_TITANBORN     = 16, // TITLE Titanborn
+    //CLASS_TITANBORN     = 17, // TITLE Titanborn
+    //CLASS_TITANBORN     = 18, // TITLE Titanborn
+    //CLASS_TITANBORN     = 19, // TITLE Titanborn
+    //CLASS_TITANBORN     = 20, // TITLE Titanborn
+    //CLASS_TITANBORN     = 21, // TITLE Titanborn
 };
 
 // max+1 for player class
