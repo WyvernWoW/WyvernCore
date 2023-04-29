@@ -10238,7 +10238,7 @@ void Unit::ProcSkillsAndReactives(bool isVictim, Unit* procTarget, uint32 typeMa
            )
         {
             // On melee based hit/miss/resist need update skill (for victim and attacker)
-            if (hitMask & (PROC_HIT_NORMAL | PROC_HIT_MISS | PROC_HIT_FULL_RESIST))
+            if (hitMask & (PROC_HIT_NORMAL | PROC_HIT_MISS | PROC_HIT_FULL_RESIST | PROC_HIT_PARRY))
             {
                 if (procTarget->GetTypeId() != TYPEID_PLAYER && !procTarget->IsCritter())
                     ToPlayer()->UpdateCombatSkills(procTarget, attType, isVictim);

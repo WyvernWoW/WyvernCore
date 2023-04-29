@@ -136,15 +136,15 @@ enum Classes
     //CLASS_UNK           = 10,
     CLASS_DRUID         = 11 // TITLE Druid
     //CLASS_TITANBORN     = 12, // TITLE Titanborn
-    //CLASS_TITANBORN     = 13, // TITLE Titanborn
-    //CLASS_TITANBORN     = 14, // TITLE Titanborn
-    //CLASS_TITANBORN     = 15, // TITLE Titanborn
-    //CLASS_TITANBORN     = 16, // TITLE Titanborn
-    //CLASS_TITANBORN     = 17, // TITLE Titanborn
-    //CLASS_TITANBORN     = 18, // TITLE Titanborn
-    //CLASS_TITANBORN     = 19, // TITLE Titanborn
-    //CLASS_TITANBORN     = 20, // TITLE Titanborn
-    //CLASS_TITANBORN     = 21, // TITLE Titanborn
+    //CLASS_CRUSADER      = 13, // TITLE Crusader
+    //CLASS_DRAGONSWORN   = 14, // TITLE Dragonsworn
+    //CLASS_STALKER       = 15, // TITLE Stalker
+    //CLASS_SENTINEL      = 16, // TITLE Sentinel
+    //CLASS_REVENANT      = 17, // TITLE Revenant
+    //CLASS_OCCULTIST     = 18, // TITLE Occultist
+    //CLASS_ARCHON        = 19, // TITLE Archon
+    //CLASS_PROPHET       = 20, // TITLE Prophet
+    //CLASS_REALMWALKER   = 21, // TITLE Rewalmwalker
 };
 
 // max+1 for player class
@@ -153,7 +153,7 @@ enum Classes
 #define CLASSMASK_ALL_PLAYABLE 4294967295
 // @tswow-end
 
-#define MAX_TALENT_TREES 3
+#define MAX_TALENT_TREES 4
 
 enum PlayerSpecializations
 {

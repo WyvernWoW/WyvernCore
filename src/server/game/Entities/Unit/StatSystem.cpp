@@ -711,8 +711,9 @@ void Player::UpdateAttackPowerAndDamage(bool ranged)
         if ((GetClassMask() & CLASSMASK_WAND_USERS) == 0)
         {
             AuraEffectList const& mRAPbyStat = GetAuraEffectsByType(SPELL_AURA_MOD_RANGED_ATTACK_POWER_OF_STAT_PERCENT);
-            for (AuraEffect const* aurEff : mRAPbyStat)
+            for (AuraEffect const* aurEff : mRAPbyStat) {
                 attPowerMod += CalculatePct(GetStat(Stats(aurEff->GetMiscValue())), aurEff->GetAmount());
+            }
         }
     }
     else
@@ -731,12 +732,19 @@ void Player::UpdateAttackPowerAndDamage(bool ranged)
     {
         SetRangedAttackPower(int32(base_attPower));
         SetRangedAttackPowerModPos(int32(attPowerMod));
+        if (attPowerMod >= 0)
+            SetRangedAttackPowerModPos(int32(attPowerMod));
+        else
+            SetRangedAttackPowerModNeg(int32(attPowerMod));
         SetRangedAttackPowerMultiplier(attPowerMultiplier);
     }
     else
     {
         SetAttackPower(int32(base_attPower));
-        SetAttackPowerModPos(int32(attPowerMod));
+        if (attPowerMod >= 0)
+            SetAttackPowerModPos(int32(attPowerMod));
+        else
+            SetAttackPowerModNeg(int32(attPowerMod));
         SetAttackPowerMultiplier(attPowerMultiplier);
     }
 
@@ -1407,13 +1415,19 @@ void Creature::UpdateAttackPowerAndDamage(bool ranged)
     if (ranged)
     {
         SetRangedAttackPower(int32(baseAttackPower));
-        SetRangedAttackPowerModPos(int32(attackPowerMod));
+        if (attackPowerMod >= 0)
+            SetRangedAttackPowerModPos(int32(attackPowerMod));
+        else
+            SetRangedAttackPowerModNeg(int32(attackPowerMod));
         SetRangedAttackPowerMultiplier(attackPowerMultiplier);
     }
     else
     {
         SetAttackPower(int32(baseAttackPower));
-        SetAttackPowerModPos(int32(attackPowerMod));
+        if (attackPowerMod >= 0)
+            SetAttackPowerModPos(int32(attackPowerMod));
+        else
+            SetAttackPowerModNeg(int32(attackPowerMod));
         SetAttackPowerMultiplier(attackPowerMultiplier);
     }
 
