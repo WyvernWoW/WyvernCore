@@ -12358,7 +12358,7 @@ float Unit::MeleeSpellMissChance(Unit const* victim, WeaponAttackType attType, i
 
     // melee attacks while dual wielding have +19% chance to miss
     if (!spellId && haveOffhandWeapon())
-        missChance += 19.0f;
+        missChance += 14.0f;
 
     // bonus from skills is 0.04%
     //miss_chance -= skillDiff * 0.04f;
